@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sample_app/home_page.dart';
+// import 'package:sample_app/home_page.dart';
 import 'package:get/get.dart';
-import 'package:sample_app/splssh_screen.dart';
+
+import 'homepage.dart';
+// import 'package:sample_app/splssh_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'ShadowsIntoLight',
       ),
-      home: Splash(),
+      home: HomeScreen(),
     );
   }
 }
