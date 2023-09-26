@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:sample_app/home_page.dart';
+
 import 'package:get/get.dart';
 
-import 'homepage.dart';
+import 'Screens/homepage.dart';
 // import 'package:sample_app/splssh_screen.dart';
 
 void main() {
@@ -15,12 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: 'ShadowsIntoLight',
       ),
-      home: HomeScreen(),
+      home: const HomePage(),
     );
   }
 }
