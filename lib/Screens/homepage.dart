@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:sample_app/Screens/favouriteItem.dart';
 import 'package:sample_app/Screens/fullSize.dart';
 
 class HomePage extends StatefulWidget {
@@ -53,9 +54,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.transparent,
         leading: const Padding(
           padding: EdgeInsets.all(6.0),
           child: CircleAvatar(
@@ -66,13 +68,24 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         title: const Text(
-          'App Name',
-          style: TextStyle(color: Colors.white70),
+          'Wallpaper',
+          style: TextStyle(color: Colors.white70, letterSpacing: 3.0),
         ),
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.favorite_outline),
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FavItem()),
+                );
+              },
+              child: const Icon(
+                Icons.favorite,
+                color: Colors.red,
+              ),
+            ),
           )
         ],
       ),
@@ -98,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
                 child: Container(
-                  color: Colors.greenAccent,
+                  color: Colors.white10,
                   child: Image.network(
                     images[index]['src']['tiny'],
                     fit: BoxFit.cover,
@@ -109,19 +122,28 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         InkWell(
-          onTap: () => loadMore(),
+          onTap: () {
+            loadMore();
+          },
           child: Container(
             height: 40,
             width: double.infinity,
             color: Colors.black,
-            child: const Center(
-              child: Text(
-                'Refresh',
-                style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w700),
-              ),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Load More ',
+                  style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w700),
+                ),
+                Icon(
+                  Icons.arrow_downward_sharp,
+                  color: Colors.white70,
+                ),
+              ],
             ),
           ),
         ),
