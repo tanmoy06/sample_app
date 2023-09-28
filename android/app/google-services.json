@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "432377258328",
+    "project_id": "backend-pracrice",
+    "storage_bucket": "backend-pracrice.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432377258328:android:b82161b5999ea9a5f9052d",
+        "android_client_info": {
+          "package_name": "com.example.sample_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432377258328-d9f8v1n5165p32jq1iu1d8mse2rq0389.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmaeC8_FmyIdxScZqdxx0OSlhu-lYyzhM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432377258328-d9f8v1n5165p32jq1iu1d8mse2rq0389.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
