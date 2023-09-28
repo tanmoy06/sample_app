@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:sample_app/Screens/favouriteItem.dart';
 import 'package:sample_app/Screens/fullSize.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,6 +13,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _auth = FirebaseAuth.instance;
+  late User loggedInUser;
+
+  void getCurrentUser() async {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   List images = [];
   int page = 1;
 
@@ -47,6 +62,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    getCurrentUser();
     fetchApi();
   }
 
@@ -85,7 +101,13 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.red,
               ),
             ),
-          )
+          ),
+          IconButton(
+              onPressed: () {
+                _auth.signOut();
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.logout))
         ],
       ),
       body: Column(children: [

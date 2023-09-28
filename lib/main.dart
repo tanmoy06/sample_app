@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:sample_app/Screens/welcome.dart';
 
-import 'Screens/homepage.dart';
-// import 'package:sample_app/splssh_screen.dart';
-
-void main() {
+// void main() {
+//   runApp(const MyApp());
+// }
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'ShadowsIntoLight',
       ),
-      home: const HomePage(),
+      home: const WelcomeScreen(),
     );
   }
 }
