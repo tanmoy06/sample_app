@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:sample_app/Screens/favouriteItem.dart';
 import 'package:sample_app/Screens/fullSize.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sample_app/Screens/login.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,7 +33,7 @@ class _HomePageState extends State<HomePage> {
   int page = 1;
 
   fetchApi() async {
-    await http.get(Uri.parse('https://api.pexels.com/v1/curated?per_page=80'),
+    await http.get(Uri.parse('https://api.pexels.com/v1/curated?per_page=10'),
         headers: {
           'Authorization':
               'eeJr1k9p802wc3xhj3n2AMQGZFNc3a01iyuu1DXAffWwEGWhDYYYjFph'
@@ -84,7 +86,11 @@ class _HomePageState extends State<HomePage> {
         ),
         title: const Text(
           'Wallpaper',
-          style: TextStyle(color: Colors.white70, letterSpacing: 3.0),
+          style: TextStyle(
+              color: Colors.white,
+              letterSpacing: 3.0,
+              fontFamily: 'HandWritten',
+              fontWeight: FontWeight.bold),
         ),
         actions: [
           Padding(
@@ -105,7 +111,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
               onPressed: () {
                 _auth.signOut();
-                Navigator.pop(context);
+                Get.offAll(LoginScreen());
               },
               icon: const Icon(Icons.logout))
         ],

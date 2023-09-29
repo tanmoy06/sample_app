@@ -83,16 +83,16 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-fonts:
-  - family: Rajdhani
-    fonts:
-      - asset: /home/tanmoy/Desktop/flutter/sample_app/assets/fonts/Rajdhani-Regular.ttf
-  - family: ShadowsIntoLight
-    fonts:
-      - asset: /home/tanmoy/Desktop/flutter/sample_app/assets/fonts/ShadowsIntoLight-Regular.ttf
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
+  fonts:
+    - family: Rajdhani
+      fonts:
+        - asset: assets/fonts/Rajdhani-Regular.ttf
+    - family: ShadowsIntoLight
+      fonts:
+        - asset: assets/fonts/ShadowsIntoLight-Regular.ttf
+    - family: HandWritten
+      fonts:
+        - asset: assets/fonts/DancingScript-VariableFont_wght.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
