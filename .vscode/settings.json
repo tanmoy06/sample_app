@@ -1,4 +1,4 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
-    "cmake.sourceDirectory": "E:/sample_app/linux"
+    "cmake.sourceDirectory": "D:/Flutter/sample_app/linux"
 }

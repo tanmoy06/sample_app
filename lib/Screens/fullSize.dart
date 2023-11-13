@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
@@ -13,13 +14,28 @@ class FullSizePhoto extends StatefulWidget {
 }
 
 class _FullSizePhotoState extends State<FullSizePhoto> {
-  Future<void> setWalpaper() async {
-    int location = WallpaperManager.BOTH_SCREEN;
-    var file = await DefaultCacheManager().getSingleFile(widget.image);
-    // ignore: unused_local_variable
-    String result =
-        (await WallpaperManager.setWallpaperFromFile(file.path, location))
-            as String;
+  // Future<void> setWalpaper() async {
+  //   int location = WallpaperManager.BOTH_SCREEN;
+  //   var file = await DefaultCacheManager().getSingleFile(widget.image);
+  //   // ignore: unused_local_variable
+  //   String result =
+  //       (await WallpaperManager.setWallpaperFromFile(file.path, location))
+  //           as String;
+  // }
+  Future<void> setWallpaper() async {
+    try {
+      int location = WallpaperManager.BOTH_SCREEN;
+      var file = await DefaultCacheManager().getSingleFile(widget.image);
+      final bool result =
+          await WallpaperManager.setWallpaperFromFile(file.path, location);
+      if (kDebugMode) {
+        print(result);
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print("Error: $e");
+      }
+    }
   }
 
   MainController mainController = Get.put(MainController());
@@ -46,7 +62,7 @@ class _FullSizePhotoState extends State<FullSizePhoto> {
                 children: [
                   InkWell(
                     onTap: () {
-                      setWalpaper();
+                      setWallpaper();
                     },
                     child: const Text(
                       'Set Wallpaper',

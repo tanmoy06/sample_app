@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:sample_app/Controller/fire_auth.dart';
 import 'package:sample_app/Screens/homepage.dart';
 import 'package:sample_app/Style/bg-style.dart';
 import 'package:sample_app/Style/glossy.dart';
@@ -14,8 +15,11 @@ class Regester extends StatefulWidget {
 
 class _RegesterState extends State<Regester> {
   final _auth = FirebaseAuth.instance;
-  late String email;
-  late String pass;
+  // late String email;
+  // late String pass;
+  AuthController _authController = Get.put(AuthController());
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,10 +46,10 @@ class _RegesterState extends State<Regester> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
-                      onChanged: (value) {
-                        email = value;
-                      },
-                      controller: TextEditingController(),
+                      // onChanged: (value) {
+                      //   emailController.text = value;
+                      // },
+                      controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       textAlign: TextAlign.start,
                       decoration: InputDecoration(
@@ -65,9 +69,10 @@ class _RegesterState extends State<Regester> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
-                      onChanged: (value) {
-                        pass = value;
-                      },
+                      // onChanged: (value) {
+                      //   passController.text = value;
+                      // },
+                      controller: passController,
                       obscureText: true,
                       textAlign: TextAlign.start,
                       decoration: InputDecoration(
@@ -85,19 +90,27 @@ class _RegesterState extends State<Regester> {
                     ),
                   ),
                   InkWell(
-                    onTap: () async {
-                      try {
-                        final newUser =
-                            await _auth.createUserWithEmailAndPassword(
-                                email: email, password: pass);
-
-                        if (newUser != null) {
-                          Get.to(const HomePage());
-                        }
-                      } catch (e) {
-                        print(e);
+                    onTap: () {
+                      _authController.createUserWithEmailAndPassword(
+                          emailController.text, passController.text);
+                      if (_authController.user.value != null) {
+                        Get.to(() => const HomePage());
                       }
                     },
+                    // () async {
+                    //   try {
+                    //     final newUser =
+                    //         await _auth.createUserWithEmailAndPassword(
+                    //             email: emailController.text,
+                    //             password: passController.text);
+
+                    //     if (newUser != null) {
+                    //       Get.to(() => const HomePage());
+                    //     }
+                    //   } catch (e) {
+                    //     print(e);
+                    //   }
+                    // },
                     child: Padding(
                       padding: const EdgeInsets.all(18.0),
                       child: Container(

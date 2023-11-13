@@ -6,7 +6,7 @@ import 'package:sample_app/Screens/welcome.dart';
 // void main() {
 //   runApp(const MyApp());
 // }
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());

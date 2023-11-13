@@ -25,7 +25,8 @@ class _HomePageState extends State<HomePage> {
         loggedInUser = user;
       }
     } catch (e) {
-      print(e);
+      Get.snackbar('Error', e.toString(), backgroundColor: Colors.red);
+      return null;
     }
   }
 
@@ -33,7 +34,7 @@ class _HomePageState extends State<HomePage> {
   int page = 1;
 
   fetchApi() async {
-    await http.get(Uri.parse('https://api.pexels.com/v1/curated?per_page=10'),
+    await http.get(Uri.parse('https://api.pexels.com/v1/curated?per_page=80'),
         headers: {
           'Authorization':
               'eeJr1k9p802wc3xhj3n2AMQGZFNc3a01iyuu1DXAffWwEGWhDYYYjFph'
