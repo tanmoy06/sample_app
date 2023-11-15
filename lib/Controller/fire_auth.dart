@@ -9,6 +9,9 @@ class AuthController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    _auth.authStateChanges().listen((User? newUser) {
+      user.value = newUser;
+    });
     user.bindStream(_auth.authStateChanges());
   }
 
